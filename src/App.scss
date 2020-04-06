@@ -1,0 +1,22 @@
+// this file mirrors bulma.sass
+// this is only here since importing bulma.sass
+// throws an error for its first line `@charset "utf-8"`
+
+// BEGIN - bulma.sass
+@charset "utf-8";
+@import "../node_modules/bulma/sass/utilities/_all";
+@import "../node_modules/bulma/sass/base/_all";
+@import "../node_modules/bulma/sass/elements/_all";
+@import "../node_modules/bulma/sass/form/_all";
+@import "../node_modules/bulma/sass/components/_all";
+@import "../node_modules/bulma/sass/grid/_all";
+@import "../node_modules/bulma/sass/layout/_all";
+// END - bulma.sass
+
+table td,
+table th {
+    vertical-align: top;
+    &:not([align]) {
+        text-align: center;
+    }
+}
