@@ -8,11 +8,16 @@ type NavbarBurgerType = {
 
 const NavbarBurger = (props: NavbarBurgerType) => {
     return (
-        <a type="button" onClick={props.toggleIsActive} className={cx("navbar-burger", props.isActive ? "is-active" : "")} aria-label="menu" aria-expanded="false">
+        <button type="button"
+            onClick={props.toggleIsActive}
+            className={cx("navbar-burger", props.isActive ? "is-active" : "")}
+            aria-label="menu"
+            aria-expanded="false"
+        >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-        </a>
+        </button>
     );
 };
 

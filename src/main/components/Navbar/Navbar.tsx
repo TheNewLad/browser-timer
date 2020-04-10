@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HOME_PATH, TIMER_PATH } from '../../constants/constants';
 import NavbarBurger from '../NavbarBurger/NavbarBurger';
-import { NavLink, useRouteMatch, useLocation } from 'react-router-dom';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 
 const cx = require('classnames');
 

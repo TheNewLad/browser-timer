@@ -39,7 +39,7 @@ const DateTimePicker = () => {
     return (
         <div className="container">
             <div className="columns is-centered">
-                <div className="column">
+                <div className="column is-three-quarters">
                     <div className="container">
 
                         <DateTime
@@ -65,16 +65,13 @@ const DateTimePicker = () => {
 
                             </div>
                             <div className="control">
-                                <a onClick={copyLinkToClipboard} className="button far fa-copy"></a>
+                                <button onClick={copyLinkToClipboard} className="button far fa-copy"></button>
                             </div>
                             <div className="control">
-                                <a onClick={openTimerLink} className="button fas fa-external-link-alt"></a>
+                                <button onClick={openTimerLink} className="button fas fa-external-link-alt"></button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="column">
-                    {/* <TimerLink /> */}
                 </div>
             </div>
         </div>
