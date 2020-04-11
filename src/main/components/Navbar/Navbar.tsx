@@ -3,6 +3,8 @@ import { HOME_PATH, TIMER_PATH } from '../../constants/constants';
 import NavbarBurger from '../NavbarBurger/NavbarBurger';
 import { NavLink, useRouteMatch } from 'react-router-dom';
 
+import 'line-awesome/dist/line-awesome/css/line-awesome.css';
+
 const cx = require('classnames');
 
 const Navbar = () => {
@@ -15,7 +17,14 @@ const Navbar = () => {
     return (
         <nav className={cx("navbar", match?.isExact ? "is-hidden" : "")}>
             <div className="navbar-brand">
-                <a href={HOME_PATH} className="navbar-item">OBS Browser Timer</a>
+                <a href={HOME_PATH} className="navbar-item">
+                    <span className="icon is-medium">
+                        <i className="la-2x las la-globe"></i>
+                    </span>
+                    <span className="icon is-medium">
+                        <i className="la-2x las la-hourglass-half"></i>
+                    </span>
+                </a>
                 <NavbarBurger
                     isActive={isActive}
                     toggleIsActive={toggleIsActive}
