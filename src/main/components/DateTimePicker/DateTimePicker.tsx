@@ -39,7 +39,22 @@ const DateTimePicker = () => {
     return (
         <div className="container">
             <div className="columns is-centered">
-                <div className="column is-three-quarters">
+                <div className="column">
+                    <div className="container">
+                        <div className="content">
+                            <h2 className="is-centered">Date/Time Picker Instructions</h2>
+                            <p>
+                                <b>Disclaimer:</b> This tool is designed to only show the hours, minutes,
+                                and seconds as a countdown.
+                                <br /><br />
+                                After picking an end time, you can either copy the link for a later time, 
+                                or follow the generated link. Ensure the date & time picked are correct, 
+                                and you're good to go!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="box column is-three-fifths">
                     <div className="container">
 
                         <DateTime
