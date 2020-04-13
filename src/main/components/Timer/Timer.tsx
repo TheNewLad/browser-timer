@@ -24,7 +24,7 @@ const Timer = () => {
     if (timeLeft) {
         timerHtml = (
             <React.Fragment>
-                { timeLeft?.hours() !== 0 && <span className="hours">{ `${timeLeft?.hours()}h ` }</span> }
+                { timeLeft?.hours() !== 0 && <span className="hours">{ `${Math.floor(timeLeft?.asHours())}h ` }</span> }
                 { timeLeft?.minutes() !== 0 && <span className="minutes">{ `${timeLeft?.minutes()}m ` }</span> }
                 <span className="seconds">{ `${timeLeft?.seconds()}s` }</span>
             </React.Fragment>
