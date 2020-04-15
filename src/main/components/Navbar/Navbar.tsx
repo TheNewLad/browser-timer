@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { HOME_PATH, TIMER_PATH } from '../../constants/constants';
 import NavbarBurger from '../NavbarBurger/NavbarBurger';
-import { NavLink, useRouteMatch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import 'line-awesome/dist/line-awesome/css/line-awesome.css';
 
 const cx = require('classnames');
 
 const Navbar = () => {
-    const match = useRouteMatch(`${TIMER_PATH}/:datetime`);
     
     const [isActive, setIsActive] = useState(false);
 
     const toggleIsActive = () => setIsActive(!isActive);
     
     return (
-        <nav className={cx("navbar", match?.isExact ? "is-hidden" : "")}>
+        <nav className="navbar">
             <div className="navbar-brand">
                 <a href={HOME_PATH} className="navbar-item">
                     <span className="icon is-medium">

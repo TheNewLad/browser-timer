@@ -12,19 +12,18 @@ function App() {
 
     return (
         <Router>
-            <section className="section">
-                <Navbar />
-
-                <Switch>
-                    <Route exact path={HOME_PATH}>
+            <Switch>
+                <Route exact path={HOME_PATH}>
+                    <section className="section">
+                        <Navbar />
                         <DateTimePicker />
-                    </Route>
-                    <Redirect exact from={`${TIMER_PATH}/`} to={HOME_PATH}/>
-                    <Route path={`${TIMER_PATH}/:datetime`}>
-                        <Timer/>
-                    </Route>
-                </Switch>
-            </section>
+                    </section>
+                </Route>
+                <Redirect exact from={`${TIMER_PATH}/`} to={HOME_PATH} />
+                <Route path={`${TIMER_PATH}/:datetime`}>
+                    <Timer />
+                </Route>
+            </Switch>
         </Router>
     );
 };
