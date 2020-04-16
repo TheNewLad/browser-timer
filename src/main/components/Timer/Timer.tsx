@@ -1,18 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import moment, { Moment, Duration } from 'moment';
 
 import styles from './Timer.module.css';
 
 type TimerTypes = {
-    datetime: string
+    epochTime: string
 }
 
-const Timer = () => {
-    const { datetime } = useParams<TimerTypes>();
+type TimerPropType = {
+    simpleFormat?: boolean
+}
 
+const Timer = ({ simpleFormat }: TimerPropType) => {
+    const { epochTime } = useParams<TimerTypes>();
+    
+    const query = useQuery(); 
     const [timeLeft, setTimeLeft] = useState<Duration>();
-    const endTime = moment(+datetime).startOf('minute');
+    
+    const date = query.get('d') || query.get('date');
+    const time = query.get('t') || query.get('time');
+    let endTime: Moment;
+
+    if (simpleFormat) {
+        if (time && !date) {
+            endTime = moment(`${time}`, 'HHmm');
+        } else {
+            endTime = moment(`${date} ${time}`, 'YYYY-MM-DD HHmm');
+        }
+    } else {
+        endTime = moment(+epochTime).startOf('minute');
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -43,5 +61,7 @@ const Timer = () => {
 };
 
 const getTimeLeft = (endTime: Moment, currentTime: Moment) => moment.duration(endTime?.diff(currentTime));
+
+const useQuery = () => new URLSearchParams(useLocation().search);
 
 export default Timer;
