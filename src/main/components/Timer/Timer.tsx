@@ -34,19 +34,19 @@ const Timer = ({ simpleFormat }: TimerPropType) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimeLeft(getTimeLeft(endTime, moment()));
+            setTimeLeft(getTimeLeft(endTime, moment().startOf('second')));
         }, 1000);
 
         return () => clearInterval(interval);
     }, [endTime]);
-    
+
     let timerHtml;
     if (timeLeft) {
         timerHtml = (
             <span className="timer">
-                { timeLeft?.hours() !== 0 && <span className="hours">{ `${Math.floor(timeLeft?.asHours())}h ` }</span> }
-                { timeLeft?.minutes() !== 0 && <span className="minutes">{ `${timeLeft?.minutes()}m ` }</span> }
-                <span className="seconds">{ `${timeLeft?.seconds()}s` }</span>
+                {timeLeft?.hours() !== 0 && <span className="hours">{`${Math.floor(timeLeft?.asHours())}h `}</span>}
+                {timeLeft?.minutes() !== 0 && <span className="minutes">{`${timeLeft?.minutes()}m `}</span>}
+                <span className="seconds">{`${timeLeft?.seconds()}s`}</span>
             </span>
         );
     } else {
@@ -55,12 +55,17 @@ const Timer = ({ simpleFormat }: TimerPropType) => {
 
     return (
         <section className={styles.container}>
-            { timerHtml }
+            {timerHtml}
         </section>
     );
 };
 
-const getTimeLeft = (endTime: Moment, currentTime: Moment) => moment.duration(endTime?.diff(currentTime));
+const getTimeLeft = (endTime: Moment, currentTime: Moment) => {
+    if (endTime.isAfter(currentTime)) {
+        return moment.duration(endTime?.diff(currentTime));
+    }
+    return moment.duration(currentTime?.diff(endTime));
+};
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
