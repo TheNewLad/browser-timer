@@ -27,7 +27,7 @@ const DateTimePicker = () => {
                             and seconds as a countdown.
                         </p>
                         <p>
-                            After picking an start or end time, you can either copy the link for a later time,
+                            After picking a start or end time, you can either copy the link for a later time
                             or follow the generated link. Ensure the date and time picked are correct,
                             and you're good to go!
                         </p>

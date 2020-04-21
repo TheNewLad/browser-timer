@@ -29,12 +29,16 @@ const Timer = () => {
     }, [endTime]);
 
     let timerHtml;
-    if (timeLeft) {
+    if (!date && !time) {
         timerHtml = (
-            <span className="timer">
-                {timeLeft?.hours() !== 0 && <span className="hours">{`${Math.floor(timeLeft?.asHours())}h `}</span>}
-                {timeLeft?.minutes() !== 0 && <span className="minutes">{`${timeLeft?.minutes()}m `}</span>}
-                <span className="seconds">{`${timeLeft?.seconds()}s`}</span>
+            <span className="error">No date or time parameter found. Please <a href="/">go home</a> to generate a well-formatted link.</span>
+        );
+    } else if (timeLeft) {
+        timerHtml = (
+            <span className="timer" aria-label="timer">
+                {timeLeft?.hours() !== 0 && <span className="hours" aria-label="hours">{`${Math.floor(timeLeft?.asHours())}h `}</span>}
+                {timeLeft?.minutes() !== 0 && <span className="minutes" aria-label="minutes">{`${timeLeft?.minutes()}m `}</span>}
+                <span className="seconds" aria-label="seconds">{`${timeLeft?.seconds()}s`}</span>
             </span>
         );
     } else {
