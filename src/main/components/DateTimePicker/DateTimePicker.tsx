@@ -1,12 +1,11 @@
-import React, { useState, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import DateTime from 'react-datetime';
 import moment, { Moment } from 'moment';
-import { TIMER_PATH } from '../../constants/constants';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import './DateTime.scss';
-import styles from './DateTimePicker.module.scss';
+import colors from '../../styles/_colors.module.scss';
+import Link from '../Link/Link';
 
 const DateTimePicker = () => {
     const [selectedDate, setSelectedDate] = useState<Moment>();
@@ -23,13 +22,13 @@ const DateTimePicker = () => {
                     <div className="content">
                         <h2>Date/Time Picker Instructions</h2>
                         <p>
-                            <b className={styles.red}>Disclaimer: </b>
+                            <b className={colors.accentColor}>Disclaimer: </b>
                             This tool is designed to only show the hours, minutes,
                             and seconds as a countdown.
                         </p>
                         <p>
-                            After picking an end time, you can either copy the link for a later time,
-                            or follow the generated link. Ensure the date & time picked are correct,
+                            After picking an start or end time, you can either copy the link for a later time,
+                            or follow the generated link. Ensure the date and time picked are correct,
                             and you're good to go!
                         </p>
                     </div>

@@ -18,5 +18,6 @@ table th {
     vertical-align: top;
     &:not([align]) {
         text-align: center;
+        vertical-align: middle;
     }
 }

@@ -2,8 +2,9 @@
  * https://github.com/YouCanBookMe/react-datetime
  */
 
-$red: #a00;
-$selectedColor: $red;
+@import '../../styles/colors.module';
+
+$selectedColor: $accentColor;
 
 .rdtPicker {
   display: none;
