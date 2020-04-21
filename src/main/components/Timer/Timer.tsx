@@ -1,35 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import moment, { Moment, Duration } from 'moment';
 
 import styles from './Timer.module.css';
 
-type TimerTypes = {
-    epochTime: string
-}
+const Timer = () => {
 
-type TimerPropType = {
-    simpleFormat?: boolean
-}
-
-const Timer = ({ simpleFormat }: TimerPropType) => {
-    const { epochTime } = useParams<TimerTypes>();
-    
-    const query = useQuery(); 
+    const query = useQuery();
     const [timeLeft, setTimeLeft] = useState<Duration>();
-    
+
     const date = query.get('d') || query.get('date');
     const time = query.get('t') || query.get('time');
+    
     let endTime: Moment;
 
-    if (simpleFormat) {
-        if (time && !date) {
-            endTime = moment(`${time}`, 'HHmm');
-        } else {
-            endTime = moment(`${date} ${time}`, 'YYYY-MM-DD HHmm');
-        }
+    if (time && !date) {
+        endTime = moment(`${time}`, 'HHmm');
     } else {
-        endTime = moment(+epochTime).startOf('minute');
+        endTime = moment(`${date} ${time}`, 'YYYY-MM-DD HHmm');
     }
 
     useEffect(() => {

@@ -19,11 +19,8 @@ function App() {
                         <DateTimePicker />
                     </section>
                 </Route>
-                <Route exact path={`${TIMER_PATH}/:datetime`}>
-                    <Timer />
-                </Route>
                 <Route path={TIMER_PATH}>
-                    <Timer simpleFormat/>
+                    <Timer />
                 </Route>
             </Switch>
         </Router>
