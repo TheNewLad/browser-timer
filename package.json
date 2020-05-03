@@ -28,8 +28,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom --watchAll=false",
+    "test:watch": "react-scripts test --env=jsdom",
+    "coverage": "react-scripts test --env=jsdom --coverage --watchAll=false",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "coverageReporters": ["html"]
   },
   "eslintConfig": {
     "extends": "react-app"
