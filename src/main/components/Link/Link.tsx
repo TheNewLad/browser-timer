@@ -16,7 +16,6 @@ const Link = ({ selectedDate }: LinkProps) => {
     const time = selectedDate && selectedDate.format('HHmm');
     
     const link = (date || time ) && `${TIMER_PATH}?date=${date}&time=${time}`;
-    const location = link && `${removeTrailingSlash(window.location.href)}${link}`;
 
     return (
         <div className="field has-addons">
@@ -24,12 +23,12 @@ const Link = ({ selectedDate }: LinkProps) => {
 
                 <input
                     ref={timerLinkInput}
-                    className="input"
+                    className="input generatedLink"
                     type="text"
                     placeholder="Generated Link"
-                    value={location}
+                    value={getTimerUrl(link)}
                     readOnly
-                    aria-label="Generated Link"
+                    aria-label="generated link"
                 />
                 <p className="help">{!selectedDate ? "" : `Selected Date: ${selectedDate}`}</p>
 
@@ -38,7 +37,7 @@ const Link = ({ selectedDate }: LinkProps) => {
                 <button onClick={() => copyLinkToClipboard(timerLinkInput)} className="button far fa-copy" aria-label="copy button"></button>
             </div>
             <div className="control">
-                <button onClick={() => openTimerLink(link, history)} className="button fas fa-external-link-alt" aria-label="visit link button"></button>
+                <button onClick={() => openTimerLink(link, history)} className="button fas fa-external-link-alt" aria-label="open link button"></button>
             </div>
         </div>
     );
@@ -51,8 +50,14 @@ const copyLinkToClipboard = ( input: RefObject<HTMLInputElement> ) => {
     }
 };
 
-const openTimerLink = (link: string | undefined, history: History<History.PoorMansUnknown>) => link ? history.push(link) : void (0);
+const openTimerLink = (link: string | undefined, history: History<History.PoorMansUnknown>) => link && history.push(link);
 
 const removeTrailingSlash = (url: string): string => url.replace(/\/$/, "");
+
+const getTimerUrl = (path: string | undefined): string | undefined => {
+    if (path) {
+        return `${removeTrailingSlash(window.location.href)}${path}`;
+    }
+};
 
 export default Link;
