@@ -15,7 +15,10 @@ const Navbar = () => {
     return (
         <nav className={cx("navbar", match?.isExact ? "is-hidden" : "")}>
             <div className="navbar-brand">
-                <a href={HOME_PATH} className="navbar-item">OBS Browser Timer</a>
+                {/* <a href={HOME_PATH} className="navbar-item">
+                    <span className="icon"><i className="cc"></i></span>
+                </a> */}
+                <i></i>
                 <NavbarBurger
                     isActive={isActive}
                     toggleIsActive={toggleIsActive}
