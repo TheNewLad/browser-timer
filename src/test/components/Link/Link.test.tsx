@@ -4,9 +4,9 @@ import Link from '../../../main/components/Link/Link';
 import moment from 'moment';
 import {TIMER_PATH} from "../../../main/constants/constants";
 
-const mockHistory = jest.fn();
+const mockHistory = jest.fn(); //TODO Move to beforeAll
 jest.mock('react-router-dom', () => ({
-    useHistory: () => ({
+    useHisxtory: () => ({
         push: mockHistory,
     }),
 }));

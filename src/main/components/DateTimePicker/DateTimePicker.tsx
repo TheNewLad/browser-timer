@@ -35,7 +35,6 @@ const DateTimePicker = () => {
                 </div>
                 <div className="box column is-three-fifths is-offset-1">
                     <div className="container">
-
                         <DateTime
                             className="has-text-centered"
                             input={false}

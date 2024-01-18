@@ -52,13 +52,15 @@ const Timer = () => {
     );
 };
 
-const getTimeLeft = (endTime: Moment, currentTime: Moment) => {
+export const getTimeLeft = (endTime: Moment, currentTime: Moment) => {
     if (endTime.isAfter(currentTime)) {
         return moment.duration(endTime?.diff(currentTime));
     }
     return moment.duration(currentTime?.diff(endTime));
 };
 
-const useQuery = () => new URLSearchParams(useLocation().search);
+export const useQuery = () => new URLSearchParams(useLocation().search);
+
+// export const getQueryParam = (string: param) => useQuery().get(param);
 
 export default Timer;
